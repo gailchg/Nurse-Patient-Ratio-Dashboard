@@ -21,20 +21,8 @@ st.markdown("""
     html, body, p, h1, h2, h3, h4, h5, h6, .stMarkdown, .metric-value, .metric-label {
         font-family: 'Karla', sans-serif !important;
     }
-    
-    /* 3. HIDE TOP RIGHT MENU (Fork, Deploy, 3-Dots) */
-    [data-testid="stToolbar"] {
-        visibility: hidden !important;
-        height: 0px;
-    }
-    
-    /* HIDE COLORED LINE AT TOP */
-    [data-testid="stDecoration"] {
-        visibility: hidden !important;
-        height: 0px;
-    }
             
-    /* 4. BACKGROUND & CARDS */
+    /* 3. BACKGROUND & CARDS */
     .stApp {
         background-color: #f4f6f9;
     }
