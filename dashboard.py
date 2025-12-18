@@ -229,5 +229,5 @@ with st.expander("📝 Data Source & Methodology Note (Click to Expand)", expand
     **Methodology & Enrichment:** The original dataset contained patient timestamps (`D.O.A`) and volume (`Patient_Count`) but lacked specific nurse staffing logs. 
     To enable this analysis, **Nurse Counts** were enriched using a standard 1:5 nurse-to-patient ratio model to simulate realistic staffing requirements based on daily patient influx.
     
-    *Note: This data enrichment method for simulation purposes was explicitly approved by the course instructor.*
+    *Note: This data enrichment method was explicitly approved by the course instructor.*
     """)
