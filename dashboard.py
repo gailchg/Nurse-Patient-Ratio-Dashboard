@@ -11,7 +11,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- 2. CUSTOM CSS (FIXED: Won't break icons) ---
+# --- 2. CUSTOM CSS  ---
 st.markdown("""
 <style>
     /* 1. LOAD FONT */
@@ -22,7 +22,12 @@ st.markdown("""
         font-family: 'Karla', sans-serif !important;
     }
     
-    /* 3. BACKGROUND & CARDS */
+    /* 3. HIDE STREAMLIT HEADER (The "Fork" Button & Top Bar) */
+    header {
+        visibility: hidden;
+    }
+            
+    /* 4. BACKGROUND & CARDS */
     .stApp {
         background-color: #f4f6f9;
     }
@@ -60,7 +65,7 @@ st.markdown("""
 @st.cache_data
 def load_data():
     df = pd.read_csv('Final_Dashboard_Data_v3.csv')
-    # FIX: Handle DD/MM/YYYY format correctly
+    # Handle DD/MM/YYYY format correctly
     df['D.O.A'] = pd.to_datetime(df['D.O.A'], dayfirst=True)
     return df
 
@@ -112,7 +117,6 @@ df_filtered = df.loc[mask]
 df_filtered = df_filtered[df_filtered['Patients_Per_Nurse'] >= min_ratio]
 
 # --- 5. DASHBOARD HEADER (YOUR EXACT TOPIC) ---
-#st.markdown("### 🎓 Academic Project Dashboard")
 st.markdown("# Nurse-to-Patient Ratio Monitor")
 st.markdown("### *Real-time staffing visualization against patient influx*")
 st.markdown("---")
@@ -176,7 +180,7 @@ fig_main.update_layout(
     hovermode="x unified",
     margin=dict(l=0, r=0, t=30, b=0),
     height=450,
-    showlegend=True, # Kept true so you can see "Patient" vs "Nurse" lines
+    showlegend=True, 
     legend=dict(orientation="h", y=1.1, x=1)
 )
 st.plotly_chart(fig_main, use_container_width=True)
@@ -217,7 +221,7 @@ with col_right:
         template="plotly_white",
         xaxis_title="Bed Occupancy (%)",
         yaxis_title="Nurse Ratio (1:X)",
-        coloraxis_showscale=False # REMOVED THE COLOR BAR (KEY) AS REQUESTED
+        coloraxis_showscale=False 
     )
     st.plotly_chart(fig_scatter, use_container_width=True)
 
