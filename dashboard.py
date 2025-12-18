@@ -11,38 +11,39 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- 2. CUSTOM CSS  ---
+# --- 2. CUSTOM CSS (Adaptive: Dark/Light Mode Support) ---
 st.markdown("""
 <style>
     /* 1. LOAD FONT */
     @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;600;700&display=swap');
 
-    /* 2. APPLY FONT TO TEXT ONLY (Not Icons) */
+    /* 2. APPLY FONT */
     html, body, p, h1, h2, h3, h4, h5, h6, .stMarkdown, .metric-value, .metric-label {
         font-family: 'Karla', sans-serif !important;
     }
             
-    /* 3. BACKGROUND & CARDS */
+    /* 3. ADAPTIVE CARDS */
     .stApp {
-        background-color: #f4f6f9;
+        /* Uses Streamlit's default background */
     }
     
     .metric-card {
-        background-color: #ffffff;
+        background-color: var(--secondary-background-color); /* ADAPTS TO THEME */
         padding: 20px;
         border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         text-align: center;
-        border: 1px solid #eaeaea;
+        border: 1px solid var(--secondary-background-color);
     }
     .metric-value {
         font-size: 28px;
         font-weight: 700;
-        color: #2c3e50;
+        color: var(--text-color); /* ADAPTS TO THEME */
     }
     .metric-label {
         font-size: 14px;
-        color: #7f8c8d;
+        color: var(--text-color); /* ADAPTS TO THEME */
+        opacity: 0.7;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -171,7 +172,7 @@ fig_main.add_trace(go.Scatter(
 
 fig_main.update_layout(
     font=dict(family="Karla, sans-serif", size=14, color="#2c3e50"),
-    template="plotly_white",
+    template="streamlit",
     hovermode="x unified",
     margin=dict(l=0, r=0, t=30, b=0),
     height=450,
@@ -193,7 +194,7 @@ with col_left:
     )
     fig_hist.update_layout(
         font=dict(family="Karla, sans-serif"),
-        template="plotly_white",
+        template="streamlit",
         xaxis_title="Patients per Nurse",
         yaxis_title="Days Occurred",
         bargap=0.2
@@ -213,7 +214,7 @@ with col_right:
     )
     fig_scatter.update_layout(
         font=dict(family="Karla, sans-serif"),
-        template="plotly_white",
+        template="streamlit",
         xaxis_title="Bed Occupancy (%)",
         yaxis_title="Nurse Ratio (1:X)",
         coloraxis_showscale=False 
