@@ -22,9 +22,16 @@ st.markdown("""
         font-family: 'Karla', sans-serif !important;
     }
     
-    /* 3. HIDE STREAMLIT HEADER (The "Fork" Button & Top Bar) */
-    header {
-        visibility: hidden;
+    /* 3. HIDE TOP RIGHT MENU (Fork, Deploy, 3-Dots) */
+    [data-testid="stToolbar"] {
+        visibility: hidden !important;
+        height: 0px;
+    }
+    
+    /* HIDE COLORED LINE AT TOP */
+    [data-testid="stDecoration"] {
+        visibility: hidden !important;
+        height: 0px;
     }
             
     /* 4. BACKGROUND & CARDS */
